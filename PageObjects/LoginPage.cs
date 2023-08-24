@@ -15,6 +15,13 @@ namespace WebUITestFramework.PageObjects
     {
         public const string URL = "https://www.saucedemo.com";
         public const string TITLE = "Swag Labs";
+        public const string USERNAMEREQUIREDERRORMESSAGE = "Epic sadface: Username is required";
+        public const string PASSWORDREQUIREDERRORMESSAGE = "Epic sadface: Password is required";
+        public const string PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE = "Epic sadface: Username and password do not match any user in this service";
+        public const string USERHASBEENLOCKEDOUTERRORMESSAGE = "Epic sadface: Sorry, this user has been locked out.";
+        public const string STANDARDUSERUSERNAME = "standard_user";
+        public const string LOCKEDOUTUSERUSERNAME = "locked_out_user";
+        public const string PASSWORD = "secret_sauce";
 
         private IWebDriver _driver;
 
@@ -26,6 +33,9 @@ namespace WebUITestFramework.PageObjects
 
         [FindsBy(How = How.Id, Using = "login-button")]
         private IWebElement loginButton;
+
+        [FindsBy(How = How.ClassName, Using = "error-button")]
+        private IWebElement errorButton;
 
         public LoginPage(IWebDriver driver)
         {
@@ -60,6 +70,14 @@ namespace WebUITestFramework.PageObjects
         }
 
         /// <summary>
+        /// Clicks the error button
+        /// </summary>
+        public void ClickErrorButton()
+        {
+            errorButton.Click();
+        }
+
+        /// <summary>
         /// Logs in with the provided credentials
         /// </summary>
         /// <param name="username"></param>
@@ -69,6 +87,13 @@ namespace WebUITestFramework.PageObjects
             EnterUserName(username);
             EnterPassword(password);
             ClickLogin();
+        }
+
+        public bool TextIsPresentOnPage(string text)
+        {
+            //var elements = _driver.FindElements(By.XPath("//*[contains(text(), '" + text + "')]"));
+            var pageSource = _driver.PageSource;
+            return _driver.PageSource.Contains(text);
         }
     }
 }
