@@ -101,3 +101,11 @@ C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\refint\We
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.pdb
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.genruntimeconfig.cache
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\ref\WebUITestFramework.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\AngleSharp.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\SeleniumExtras.PageObjects.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriver.Support.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\ICSharpCode.SharpZipLib.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\System.Text.Json.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriverManager.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
