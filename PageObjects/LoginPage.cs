@@ -91,12 +91,5 @@ namespace WebUITestFramework.PageObjects
             ClickLogin();
             return new InventoryPage(_driver);
         }
-
-        public bool TextIsPresentOnPage(string text)
-        {
-            //var elements = _driver.FindElements(By.XPath("//*[contains(text(), '" + text + "')]"));
-            var pageSource = _driver.PageSource;
-            return _driver.PageSource.Contains(text);
-        }
     }
 }

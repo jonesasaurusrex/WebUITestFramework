@@ -34,10 +34,10 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.True, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(2)]
@@ -55,10 +55,10 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(3)]
@@ -77,10 +77,10 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(4)]
@@ -100,10 +100,10 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(5)]
@@ -123,10 +123,10 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
         }
 
         [Test, Order(6)]
@@ -146,17 +146,17 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(7)]
@@ -175,17 +175,17 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(8)]
@@ -203,17 +203,17 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(9)]
@@ -233,17 +233,17 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(Globals.TextIsPresentOnPage(_driver, LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [TearDown]
