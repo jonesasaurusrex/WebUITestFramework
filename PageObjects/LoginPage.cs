@@ -15,12 +15,13 @@ namespace WebUITestFramework.PageObjects
     {
         public const string URL = "https://www.saucedemo.com";
         public const string TITLE = "Swag Labs";
-        public const string USERNAMEREQUIREDERRORMESSAGE = "Epic sadface: Username is required";
-        public const string PASSWORDREQUIREDERRORMESSAGE = "Epic sadface: Password is required";
-        public const string PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE = "Epic sadface: Username and password do not match any user in this service";
-        public const string USERHASBEENLOCKEDOUTERRORMESSAGE = "Epic sadface: Sorry, this user has been locked out.";
-        public const string STANDARDUSERUSERNAME = "standard_user";
-        public const string LOCKEDOUTUSERUSERNAME = "locked_out_user";
+        public const string USERNAME_REQUIRED_ERROR_MESSAGE = "Epic sadface: Username is required";
+        public const string PASSWORD_REQUIRED_ERROR_MESSAGE = "Epic sadface: Password is required";
+        public const string PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE = "Epic sadface: Username and password do not match any user in this service";
+        public const string USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE = "Epic sadface: Sorry, this user has been locked out.";
+        public const string USER_HAS_TIMED_OUT_ERROR_MESSAGE = "Epic sadface: You can only access '/inventory-item.html' when you are logged in.";
+        public const string STANDARD_USER_USERNAME = "standard_user";
+        public const string LOCKED_OUT_USER_USERNAME = "locked_out_user";
         public const string PASSWORD = "secret_sauce";
 
         private IWebDriver _driver;
@@ -82,11 +83,13 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public void LoginWithCredentials(string username, string password)
+        public InventoryPage LoginWithCredentials(string username, string password)
         {
+            _driver.Navigate().GoToUrl(URL);
             EnterUserName(username);
             EnterPassword(password);
             ClickLogin();
+            return new InventoryPage(_driver);
         }
 
         public bool TextIsPresentOnPage(string text)

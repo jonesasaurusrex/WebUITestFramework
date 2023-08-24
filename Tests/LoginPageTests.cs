@@ -9,8 +9,8 @@ namespace WebUITestFramework.Tests
     public class LoginPageTests
     {
         private IWebDriver _driver;
-        private const string ERROR_MESSAGEISERRONEOUSLYDISPLAYED = "ERROR: Error message is erroneously displayed";
-        private const string ERROR_MESSAGEISNOTDISPLAYED = "ERROR: Error message is erroneously displayed";
+        private const string ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED = "ERROR: Error message is erroneously displayed";
+        private const string ERROR_MESSAGE_IS_NOT_DISPLAYED = "ERROR: Error message is erroneously displayed";
         [SetUp]
         public void Setup()
         {
@@ -19,6 +19,7 @@ namespace WebUITestFramework.Tests
 
         [Test, Order(1)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page can successfully log in")]
         [Category("Smoke Test")]
         public void LoginPageShouldSuccessfullyLoginWithGoodCredentials()
         {
@@ -27,20 +28,21 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.STANDARDUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.STANDARD_USER_USERNAME);
             loginPage.EnterPassword(LoginPage.PASSWORD);
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.True, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(2)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the correct error message with no username supplied")]
         [Category("Smoke Test")]
         public void LoginPageShouldDisplayErrorMessageWithoutUsername()
         {
@@ -53,14 +55,15 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(3)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the correct error message with no password supplied")]
         [Category("Smoke Test")]
         public void LoginPageShouldDisplayErrorMessageWithoutPassword()
         {
@@ -69,19 +72,20 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.STANDARDUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.STANDARD_USER_USERNAME);
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(4)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the correct error message with a bad password supplied")]
         [Category("Smoke Test")]
         public void LoginPageShouldDisplayErrorMessageWithBadPassword()
         {
@@ -90,20 +94,21 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.STANDARDUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.STANDARD_USER_USERNAME);
             loginPage.EnterPassword("asdf");
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(5)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the correct error message with a locked out user supplied")]
         [Category("Smoke Test")]
         public void LoginPageShouldDisplayErrorMessageWithLockedOutUser()
         {
@@ -112,20 +117,21 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.LOCKEDOUTUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.LOCKED_OUT_USER_USERNAME);
             loginPage.EnterPassword(LoginPage.PASSWORD);
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
         }
 
         [Test, Order(6)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the error message with bad password supplied and then clears it when the clear error button is clicked")]
         [Category("Smoke Test")]
         public void LoginPageShouldRemovePasswordAndUsernameMismatchErrorMessageAfterErrorButtonIsClicked()
         {
@@ -134,27 +140,28 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.STANDARDUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.STANDARD_USER_USERNAME);
             loginPage.EnterPassword("asdf");
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(7)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the error message with no password supplied and then clears it when the clear error button is clicked")]
         [Category("Smoke Test")]
         public void LoginPageShouldRemovePasswordRequiredErrorMessageAfterErrorButtonIsClicked()
         {
@@ -163,26 +170,27 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.STANDARDUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.STANDARD_USER_USERNAME);
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(8)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the error message with no username supplied and then clears it when the clear error button is clicked")]
         [Category("Smoke Test")]
         public void LoginPageShouldRemoveUsernameRequiredErrorMessageAfterErrorButtonIsClicked()
         {
@@ -195,21 +203,22 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [Test, Order(9)]
         [Author("Travis Schultz")]
+        [Description("Checks that the page displays the error message with locked out user supplied and then clears it when the clear error button is clicked")]
         [Category("Smoke Test")]
         public void LoginPageShouldRemoveLockedOutUserErrorMessageAfterErrorButtonIsClicked()
         {
@@ -218,23 +227,23 @@ namespace WebUITestFramework.Tests
             _driver.Navigate().GoToUrl(LoginPage.URL);
 
             //Act
-            loginPage.EnterUserName(LoginPage.LOCKEDOUTUSERUSERNAME);
+            loginPage.EnterUserName(LoginPage.LOCKED_OUT_USER_USERNAME);
             loginPage.EnterPassword(LoginPage.PASSWORD);
             loginPage.ClickLogin();
 
             //Assert
             Assert.That(_driver.Url.Contains("inventory"), Is.False, "ERROR: Url mismatch");
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.True, ERROR_MESSAGEISNOTDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.True, ERROR_MESSAGE_IS_NOT_DISPLAYED);
 
             loginPage.ClickErrorButton();
 
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAMEREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDREQUIREDERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORDANDUSERNAMEMISMATCHERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
-            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERHASBEENLOCKEDOUTERRORMESSAGE), Is.False, ERROR_MESSAGEISERRONEOUSLYDISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USERNAME_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_REQUIRED_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
+            Assert.That(loginPage.TextIsPresentOnPage(LoginPage.USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE), Is.False, ERROR_MESSAGE_IS_ERRONEOUSLY_DISPLAYED);
         }
 
         [TearDown]
