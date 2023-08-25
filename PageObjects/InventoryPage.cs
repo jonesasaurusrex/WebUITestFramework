@@ -13,290 +13,112 @@ namespace WebUITestFramework.PageObjects
     {
         public const string URL = "https://www.saucedemo.com/inventory.html";
         public const string TITLE = "Swag Labs";
+        public static readonly string[] BACKPACK_ELEMENT_IDS = {
+            "add-to-cart-sauce-labs-backpack",
+            "remove-sauce-labs-backpack",
+            "item_4_title_link",
+            "item_4_img_link"
+        };
+        public static readonly string[] BIKE_LIGHT_ELEMENT_IDS = {
+            "add-to-cart-sauce-labs-bike-light",
+            "remove-sauce-labs-bike-light",
+            "item_0_title_link",
+            "item_0_img_link"
+        };
+        public static readonly string[] BOLT_TSHIRT_ELEMENT_IDS = {
+            "add-to-cart-sauce-labs-bolt-t-shirt",
+            "remove-sauce-labs-bolt-t-shirt",
+            "item_1_title_link",
+            "item_1_img_link"
+        };
+        public static readonly string[] FLEECE_JACKET_ELEMENT_IDS = {
+            "add-to-cart-sauce-labs-fleece-jacket",
+            "remove-sauce-labs-fleece-jacket",
+            "item_5_title_link",
+            "item_5_img_link"
+        };
+        public static readonly string[] ONESIE_ELEMENT_IDS = {
+            "add-to-cart-sauce-labs-onesie",
+            "remove-sauce-labs-onesie",
+            "item_2_title_link",
+            "item_2_img_link"
+        };
+        public static readonly string[] TEST_ALL_THE_THINGS_TSHIRT_ELEMENT_IDS = {
+            "add-to-cart-test.allthethings()-t-shirt-(red)",
+            "remove-test.allthethings()-t-shirt-(red)",
+            "item_3_title_link",
+            "item_3_img_link"
+        };
 
         private IWebDriver _driver;
 
-        //Backpack Section Elements
-        [FindsBy(How = How.Id, Using = "add-to-cart-sauce-labs-backpack")]
-        private IWebElement addBackpackToCartButton;
+        public InventoryItemSection BackpackSection { get; set; }
 
-        [FindsBy(How = How.Id, Using = "remove-sauce-labs-backpack")]
-        private IWebElement removeBackpackfromCartButton;
+        public InventoryItemSection BikeLightSection { get; set; }
 
-        [FindsBy(How = How.Id, Using = "item_4_title_link")]
-        private IWebElement backpackTitleLink;
+        public InventoryItemSection BoltTShirtSection { get; set; }
 
-        [FindsBy(How = How.Id, Using = "item_4_img_link")]
-        private IWebElement backpackImageLink;
+        public InventoryItemSection FleeceJacketSection { get; set; }
 
-        //Bike Light Section Elements
-        [FindsBy(How = How.Id, Using = "add-to-cart-sauce-labs-bike-light")]
-        private IWebElement addBikeLightToCartButton;
+        public InventoryItemSection OnesieSection { get; set; }
 
-        [FindsBy(How = How.Id, Using = "remove-sauce-labs-bike-light")]
-        private IWebElement removeBikeLightFromCartButton;
+        public InventoryItemSection TestAllTheThingsTShirtSection { get; set; }
 
-        [FindsBy(How = How.Id, Using = "item_0_title_link")]
-        private IWebElement bikeLightTitleLink;
-
-        [FindsBy(How = How.Id, Using = "item_0_img_link")]
-        private IWebElement bikeLightImageLink;
-
-        //Bolt T-Shirt Section Elements
-        [FindsBy(How = How.Id, Using = "add-to-cart-sauce-labs-bolt-t-shirt")]
-        private IWebElement addBoltTShirtToCartButton;
-
-        [FindsBy(How = How.Id, Using = "remove-sauce-labs-bolt-t-shirt")]
-        private IWebElement removeBoltTShirtFromCartButton;
-
-        [FindsBy(How = How.Id, Using = "item_1_title_link")]
-        private IWebElement boltTShirtTitleLink;
-
-        [FindsBy(How = How.Id, Using = "item_1_img_link")]
-        private IWebElement boltTShirtImageLink;
-
-        //Fleece Jacket Section Elements
-        [FindsBy(How = How.Id, Using = "add-to-cart-sauce-labs-fleece-jacket")]
-        private IWebElement addFleeceJacketToCartButton;
-
-        [FindsBy(How = How.Id, Using = "remove-sauce-labs-fleece-jacket")]
-        private IWebElement removeFleeceJacketFromCartButton;
-
-        [FindsBy(How = How.Id, Using = "item_5_title_link")]
-        private IWebElement fleeceJacketTitleLink;
-
-        [FindsBy(How = How.Id, Using = "item_5_img_link")]
-        private IWebElement fleeceJacketImageLink;
-
-        //Onesie Section Elements
-        [FindsBy(How = How.Id, Using = "add-to-cart-sauce-labs-onesie")]
-        private IWebElement addOnesieToCartButton;
-
-        [FindsBy(How = How.Id, Using = "remove-sauce-labs-onesie")]
-        private IWebElement removeOnesieFromCartButton;
-
-        [FindsBy(How = How.Id, Using = "item_2_title_link")]
-        private IWebElement onesieTitleLink;
-
-        [FindsBy(How = How.Id, Using = "item_2_img_link")]
-        private IWebElement onesieImageLink;
-
-        //Test All The Things T-Shirt Section Elements
-        [FindsBy(How = How.Id, Using = "add-to-cart-test.allthethings()-t-shirt-(red)")]
-        private IWebElement addTestAllTheThingsTShirtToCartButton;
-
-        [FindsBy(How = How.Id, Using = "remove-test.allthethings()-t-shirt-(red)")]
-        private IWebElement removeTestAllTheThingsTShirtFromCartButton;
-
-        [FindsBy(How = How.Id, Using = "item_3_title_link")]
-        private IWebElement testAllTheThingsTShirtTitleLink;
-
-        [FindsBy(How = How.Id, Using = "item_3_img_link")]
-        private IWebElement testAllTheThingsTShirtImageLink;
 
         public InventoryPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
 
             PageFactory.InitElements(driver, this);
-        }
 
-        //Backpack Section Methods
-        /// <summary>
-        /// Clicks the Add to cart button for the backpack
-        /// </summary>
-        public void ClickAddBackpackToCartButton()
-        {
-            addBackpackToCartButton.Click();
-        }
+            BackpackSection = new InventoryItemSection(
+                driver,
+                BACKPACK_ELEMENT_IDS[0],
+                BACKPACK_ELEMENT_IDS[1],
+                BACKPACK_ELEMENT_IDS[2],
+                BACKPACK_ELEMENT_IDS[3]
+                );
 
-        /// <summary>
-        /// Clicks the Remove button for the backpack
-        /// </summary>
-        public void ClickRemoveBackpackFromCartButton()
-        {
-            removeBackpackfromCartButton.Click();
-        }
 
-        /// <summary>
-        /// Clicks the Backpack Title link
-        /// </summary>
-        public void ClickBackpackTitle()
-        {
-            backpackTitleLink.Click();
-        }
+            BikeLightSection = new InventoryItemSection(
+                driver,
+                BIKE_LIGHT_ELEMENT_IDS[0],
+                BIKE_LIGHT_ELEMENT_IDS[1],
+                BIKE_LIGHT_ELEMENT_IDS[2],
+                BIKE_LIGHT_ELEMENT_IDS[3]
+                );
 
-        /// <summary>
-        /// Clicks the Backpack Image link
-        /// </summary>
-        public void ClickBackpackImage()
-        {
-            backpackImageLink.Click();
-        }
+            BoltTShirtSection = new InventoryItemSection(
+                driver,
+                BOLT_TSHIRT_ELEMENT_IDS[0],
+                BOLT_TSHIRT_ELEMENT_IDS[1],
+                BOLT_TSHIRT_ELEMENT_IDS[2],
+                BOLT_TSHIRT_ELEMENT_IDS[3]
+                );
 
-        //Bike Light Section Methods
-        /// <summary>
-        /// Clicks the Add to cart button for the Bike Light
-        /// </summary>
-        public void ClickAddBikeLightToCartButton()
-        {
-            addBikeLightToCartButton.Click();
-        }
+            FleeceJacketSection = new InventoryItemSection(
+                driver,
+                FLEECE_JACKET_ELEMENT_IDS[0],
+                FLEECE_JACKET_ELEMENT_IDS[1],
+                FLEECE_JACKET_ELEMENT_IDS[2],
+                FLEECE_JACKET_ELEMENT_IDS[3]
+                );
 
-        /// <summary>
-        /// Clicks the Remove button for the Bike Light
-        /// </summary>
-        public void ClickRemoveBikeLightFromCartButton()
-        {
-            removeBikeLightFromCartButton.Click();
-        }
+            OnesieSection = new InventoryItemSection(
+                driver,
+                ONESIE_ELEMENT_IDS[0],
+                ONESIE_ELEMENT_IDS[1],
+                ONESIE_ELEMENT_IDS[2],
+                ONESIE_ELEMENT_IDS[3]
+                );
 
-        /// <summary>
-        /// Clicks the Bike Light Title link
-        /// </summary>
-        public void ClickBikeLightTitle()
-        {
-            bikeLightTitleLink.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Bike Light Image link
-        /// </summary>
-        public void ClickBikeLightImage()
-        {
-            bikeLightImageLink.Click();
-        }
-
-        //Bolt T-Shirt Section Methods
-        /// <summary>
-        /// Clicks the Add to cart button for the Bolt T-Shirt
-        /// </summary>
-        public void ClickAddBoltTShirtToCartButton()
-        {
-            addBoltTShirtToCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Remove button for the Bolt T-Shirt
-        /// </summary>
-        public void ClickRemoveBoltTShirtFromCartButton()
-        {
-            removeBoltTShirtFromCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Bolt T-Shirt Title link
-        /// </summary>
-        public void ClickBoltTShirtTitle()
-        {
-            boltTShirtTitleLink.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Bolt T-Shirt Image link
-        /// </summary>
-        public void ClickBoltTShirtImage()
-        {
-            boltTShirtImageLink.Click();
-        }
-
-        //Fleece Jacket Section Methods
-        /// <summary>
-        /// Clicks the Add to cart button for the Fleece Jacket
-        /// </summary>
-        public void ClickAddFleeceJacketToCartButton()
-        {
-            addFleeceJacketToCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Remove button for the Fleece Jacket
-        /// </summary>
-        public void ClickRemoveFleeceJacketFromCartButton()
-        {
-            removeFleeceJacketFromCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Fleece Jacket Title link
-        /// </summary>
-        public void ClickFleeceJacketTitle()
-        {
-            fleeceJacketTitleLink.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Fleece Jacket Image link
-        /// </summary>
-        public void ClickFleeceJacketImage()
-        {
-            fleeceJacketImageLink.Click();
-        }
-
-        //Onesie Section Methods
-        /// <summary>
-        /// Clicks the Add to cart button for the Onesie
-        /// </summary>
-        public void ClickAddOnesieToCartButton()
-        {
-            addOnesieToCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Remove button for the Onesie
-        /// </summary>
-        public void ClickRemoveOnesieFromCartButton()
-        {
-            removeOnesieFromCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Onesie Title link
-        /// </summary>
-        public void ClickOnesieTitle()
-        {
-            onesieTitleLink.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Onesie Image link
-        /// </summary>
-        public void ClickOnesieImage()
-        {
-            onesieImageLink.Click();
-        }
-
-        //Test All The Things T-Shirt Section Methods
-        /// <summary>
-        /// Clicks the Add to cart button for the Test All The Things T-Shirt
-        /// </summary>
-        public void ClickAddTestAllTheThingsTShirtToCartButton()
-        {
-            addTestAllTheThingsTShirtToCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Remove button for the Test All The Things T-Shirt
-        /// </summary>
-        public void ClickRemoveTestAllTheThingsTShirtFromCartButton()
-        {
-            removeTestAllTheThingsTShirtFromCartButton.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Test All The Things T-Shirt Title link
-        /// </summary>
-        public void ClickTestAllTheThingsTShirtTitle()
-        {
-            testAllTheThingsTShirtTitleLink.Click();
-        }
-
-        /// <summary>
-        /// Clicks the Test All The Things T-Shirt Image link
-        /// </summary>
-        public void ClickTestAllTheThingsTShirtImage()
-        {
-            testAllTheThingsTShirtImageLink.Click();
+            TestAllTheThingsTShirtSection = new InventoryItemSection(
+                driver,
+                TEST_ALL_THE_THINGS_TSHIRT_ELEMENT_IDS[0],
+                TEST_ALL_THE_THINGS_TSHIRT_ELEMENT_IDS[1],
+                TEST_ALL_THE_THINGS_TSHIRT_ELEMENT_IDS[2],
+                TEST_ALL_THE_THINGS_TSHIRT_ELEMENT_IDS[3]
+                );
         }
     }
 }

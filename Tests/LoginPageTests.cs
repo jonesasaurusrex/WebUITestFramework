@@ -21,6 +21,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page can successfully log in")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldSuccessfullyLoginWithGoodCredentials()
         {
             //Arrange
@@ -44,6 +45,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the correct error message with no username supplied")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldDisplayErrorMessageWithoutUsername()
         {
             //Arrange
@@ -65,6 +67,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the correct error message with no password supplied")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldDisplayErrorMessageWithoutPassword()
         {
             //Arrange
@@ -87,6 +90,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the correct error message with a bad password supplied")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldDisplayErrorMessageWithBadPassword()
         {
             //Arrange
@@ -110,6 +114,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the correct error message with a locked out user supplied")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldDisplayErrorMessageWithLockedOutUser()
         {
             //Arrange
@@ -133,6 +138,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the error message with bad password supplied and then clears it when the clear error button is clicked")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldRemovePasswordAndUsernameMismatchErrorMessageAfterErrorButtonIsClicked()
         {
             //Arrange
@@ -163,6 +169,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the error message with no password supplied and then clears it when the clear error button is clicked")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldRemovePasswordRequiredErrorMessageAfterErrorButtonIsClicked()
         {
             //Arrange
@@ -192,6 +199,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the error message with no username supplied and then clears it when the clear error button is clicked")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldRemoveUsernameRequiredErrorMessageAfterErrorButtonIsClicked()
         {
             //Arrange
@@ -220,6 +228,7 @@ namespace WebUITestFramework.Tests
         [Author("Travis Schultz")]
         [Description("Checks that the page displays the error message with locked out user supplied and then clears it when the clear error button is clicked")]
         [Category("SmokeTest")]
+        [Category("LoginPage")]
         public void LoginPageShouldRemoveLockedOutUserErrorMessageAfterErrorButtonIsClicked()
         {
             //Arrange

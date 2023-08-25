@@ -14,7 +14,6 @@ namespace WebUITestFramework.Tests
     {
         private IWebDriver _driver;
         private InventoryPage _inventoryPage;
-
         [SetUp]
         public void SetUp() {
             _driver = new ChromeDriver();
@@ -39,209 +38,52 @@ namespace WebUITestFramework.Tests
 
         [Test, Order(2)]
         [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Backpack and checks that the cart badge updates")]
+        [Description("Clicks the Add to cart button for each section and checks that the cart badge updates")]
+        [TestCase("add-to-cart-sauce-labs-backpack", "remove-sauce-labs-backpack", "item_4_title_link", "item_4_img_link")]
+        [TestCase("add-to-cart-sauce-labs-bike-light", "remove-sauce-labs-bike-light", "item_0_title_link", "item_0_img_link")]
+        [TestCase("add-to-cart-sauce-labs-bolt-t-shirt", "remove-sauce-labs-bolt-t-shirt", "item_1_title_link", "item_1_img_link")]
+        [TestCase("add-to-cart-sauce-labs-fleece-jacket", "remove-sauce-labs-fleece-jacket", "item_5_title_link", "item_5_img_link")]
+        [TestCase("add-to-cart-sauce-labs-onesie", "remove-sauce-labs-onesie", "item_2_title_link", "item_2_img_link")]
+        [TestCase("add-to-cart-test.allthethings()-t-shirt-(red)", "remove-test.allthethings()-t-shirt-(red)", "item_3_title_link", "item_3_img_link")]
         [Category("SmokeTest")]
         [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenBackpackAddToCartButtonIsPushed()
+        public void InventoryPageShouldUpdateCartBadgeWhenAddToCartButtonIsPushed(string add_id, string remove_id, string image_id, string title_id)
         {
             //Arrange
+            InventoryItemSection section = new InventoryItemSection(_driver, add_id, remove_id, image_id, title_id);
 
             //Act
-            _inventoryPage.ClickAddBackpackToCartButton();
+            section.ClickAddToCart();
 
             //Assert
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
+            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR, Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
         }
 
         [Test, Order(3)]
         [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Backpack and checks that the cart badge updates, then clicks remove and checks that the badge disappears")]
+        [Description("Clicks the Add to cart button for each section and checks that the cart badge updates, then clicks remove and checksk that the badge disappears")]
+        [TestCase("add-to-cart-sauce-labs-backpack", "remove-sauce-labs-backpack", "item_4_title_link", "item_4_img_link")]
+        [TestCase("add-to-cart-sauce-labs-bike-light", "remove-sauce-labs-bike-light", "item_0_title_link", "item_0_img_link")]
+        [TestCase("add-to-cart-sauce-labs-bolt-t-shirt", "remove-sauce-labs-bolt-t-shirt", "item_1_title_link", "item_1_img_link")]
+        [TestCase("add-to-cart-sauce-labs-fleece-jacket", "remove-sauce-labs-fleece-jacket", "item_5_title_link", "item_5_img_link")]
+        [TestCase("add-to-cart-sauce-labs-onesie", "remove-sauce-labs-onesie", "item_2_title_link", "item_2_img_link")]
+        [TestCase("add-to-cart-test.allthethings()-t-shirt-(red)", "remove-test.allthethings()-t-shirt-(red)", "item_3_title_link", "item_3_img_link")]
         [Category("SmokeTest")]
         [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenBackpackAddedToCartAndThenRemoved()
+        public void InventoryPageShouldUpdateCartBadgeWhenAddToCartButtonIsPushedAndWhenRemoveIsPushed(string add_id, string remove_id, string image_id, string title_id)
         {
             //Arrange
-            _inventoryPage.ClickAddBackpackToCartButton();
+            InventoryItemSection section = new InventoryItemSection(_driver, add_id, remove_id, image_id, title_id);
+            section.ClickAddToCart();
             Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
 
             //Act
-            _inventoryPage.ClickRemoveBackpackFromCartButton();
-
+            section.ClickRemoveFromCart();
             //Assert
-            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR, Badge is still displayed");
+            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR: Badge is still displayed");
         }
 
         [Test, Order(4)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Bike Light and checks that the cart badge updates")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenBikeLightAddToCartButtonIsPushed()
-        {
-            //Arrange
-
-            //Act
-            _inventoryPage.ClickAddBikeLightToCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-        }
-
-        [Test, Order(5)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Bike Light and checks that the cart badge updates, then clicks remove and checks that the badge disappears")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenBikeLightAddedToCartAndThenRemoved()
-        {
-            //Arrange
-            _inventoryPage.ClickAddBikeLightToCartButton();
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-
-            //Act
-            _inventoryPage.ClickRemoveBikeLightFromCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR, Badge is still displayed");
-        }
-
-        [Test, Order(6)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Bolt T-Shirt and checks that the cart badge updates")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenBoltTShirtAddToCartButtonIsPushed()
-        {
-            //Arrange
-
-            //Act
-            _inventoryPage.ClickAddBoltTShirtToCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-        }
-
-        [Test, Order(7)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Bolt T-Shirt and checks that the cart badge updates, then clicks remove and checks that the badge disappears")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenBoltTShirtAddedToCartAndThenRemoved()
-        {
-            //Arrange
-            _inventoryPage.ClickAddBoltTShirtToCartButton();
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-
-            //Act
-            _inventoryPage.ClickRemoveBoltTShirtFromCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR, Badge is still displayed");
-        }
-
-        [Test, Order(8)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Fleece Jacket and checks that the cart badge updates")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenFleeceJacketAddToCartButtonIsPushed()
-        {
-            //Arrange
-
-            //Act
-            _inventoryPage.ClickAddFleeceJacketToCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-        }
-
-        [Test, Order(9)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Fleece Jacket and checks that the cart badge updates, then clicks remove and checks that the badge disappears")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenFleeceJacketAddedToCartAndThenRemoved()
-        {
-            //Arrange
-            _inventoryPage.ClickAddFleeceJacketToCartButton();
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-
-            //Act
-            _inventoryPage.ClickRemoveFleeceJacketFromCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR, Badge is still displayed");
-        }
-
-        [Test, Order(10)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Onesie and checks that the cart badge updates")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenOnesieAddToCartButtonIsPushed()
-        {
-            //Arrange
-
-            //Act
-            _inventoryPage.ClickAddBoltTShirtToCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-        }
-
-        [Test, Order(11)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Onesie and checks that the cart badge updates, then clicks remove and checks that the badge disappears")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenOnesieAddedToCartAndThenRemoved()
-        {
-            //Arrange
-            _inventoryPage.ClickAddOnesieToCartButton();
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-
-            //Act
-            _inventoryPage.ClickRemoveOnesieFromCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR, Badge is still displayed");
-        }
-
-        [Test, Order(12)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Test All The Things T-Shirt and checks that the cart badge updates")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenTestAllTheThingsTShirtAddToCartButtonIsPushed()
-        {
-            //Arrange
-
-            //Act
-            _inventoryPage.ClickAddTestAllTheThingsTShirtToCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-        }
-
-        [Test, Order(13)]
-        [Author("Travis Schultz")]
-        [Description("Clicks the Add to cart button for the Bolt T-Shirt and checks that the cart badge updates, then clicks remove and checks that the badge disappears")]
-        [Category("SmokeTest")]
-        [Category("InventoryPage")]
-        public void InventoryPageShouldUpdateCartBadgeWhenTestAllTheThingsTShirtAddedToCartAndThenRemoved()
-        {
-            //Arrange
-            _inventoryPage.ClickAddTestAllTheThingsTShirtToCartButton();
-            Assert.That(_inventoryPage.GetShoppingCartDotText, Is.EqualTo("1"), "ERROR: Expected 1, received " + _inventoryPage.GetShoppingCartDotText());
-
-            //Act
-            _inventoryPage.ClickRemoveTestAllTheThingsTShirtFromCartButton();
-
-            //Assert
-            Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR, Badge is still displayed");
-        }
-
-        [Test, Order(14)]
         [Author("Travis Schultz")]
         [Description("Adds multiple items to the cart and checks that the cart badge updates the count of the numbers in the cart")]
         [Category("SmokeTest")]
@@ -251,20 +93,30 @@ namespace WebUITestFramework.Tests
             //Arrange
             
             //Act
-            _inventoryPage.ClickAddBackpackToCartButton();
+            _inventoryPage.BackpackSection.ClickAddToCart();
             string afterOneItemAddCount = _inventoryPage.GetShoppingCartDotText();
-            _inventoryPage.ClickAddBikeLightToCartButton();
+            _inventoryPage.BikeLightSection.ClickAddToCart();
             string afterTwoItemAddCount = _inventoryPage.GetShoppingCartDotText();
-            _inventoryPage.ClickAddBoltTShirtToCartButton();
+            _inventoryPage.BoltTShirtSection.ClickAddToCart();
             string afterThreeItemAddCount = _inventoryPage.GetShoppingCartDotText();
-            _inventoryPage.ClickAddFleeceJacketToCartButton();
+            _inventoryPage.FleeceJacketSection.ClickAddToCart();
             string afterFourItemAddCount = _inventoryPage.GetShoppingCartDotText();
-            _inventoryPage.ClickAddOnesieToCartButton();
+            _inventoryPage.OnesieSection.ClickAddToCart();
             string afterFiveItemAddCount = _inventoryPage.GetShoppingCartDotText();
-            _inventoryPage.ClickAddTestAllTheThingsTShirtToCartButton();
+            _inventoryPage.TestAllTheThingsTShirtSection.ClickAddToCart();
             string afterSixItemAddCount = _inventoryPage.GetShoppingCartDotText();
-            _inventoryPage.ClickRemoveBackpackFromCartButton();
-            string afterSixITemAddOneItemRemovedCount = _inventoryPage.GetShoppingCartDotText();
+            _inventoryPage.BackpackSection.ClickRemoveFromCart();
+            string afterSixItemAddOneItemRemovedCount = _inventoryPage.GetShoppingCartDotText();
+            _inventoryPage.BikeLightSection.ClickRemoveFromCart();
+            string afterSixItemAddTwoItemRemovedCount = _inventoryPage.GetShoppingCartDotText();
+            _inventoryPage.BoltTShirtSection.ClickRemoveFromCart();
+            string afterSixItemAddThreeItemRemovedCount = _inventoryPage.GetShoppingCartDotText();
+            _inventoryPage.FleeceJacketSection.ClickRemoveFromCart();
+            string afterSixItemAddFourItemRemovedCount = _inventoryPage.GetShoppingCartDotText();
+            _inventoryPage.OnesieSection.ClickRemoveFromCart();
+            string afterSixItemAddFiveItemRemovedCount = _inventoryPage.GetShoppingCartDotText();
+            _inventoryPage.TestAllTheThingsTShirtSection.ClickRemoveFromCart();
+            bool afterAllItemsRemovedBadgeVisable = _inventoryPage.CheckForShoppingCartBadge();
 
             //Assert
             Assert.That(afterOneItemAddCount, Is.EqualTo("1"), "ERROR: Expected 1, received " + afterOneItemAddCount);
@@ -273,14 +125,20 @@ namespace WebUITestFramework.Tests
             Assert.That(afterFourItemAddCount, Is.EqualTo("4"), "ERROR: Expected 4, received " + afterFourItemAddCount);
             Assert.That(afterFiveItemAddCount, Is.EqualTo("5"), "ERROR: Expected 5, received " + afterFiveItemAddCount);
             Assert.That(afterSixItemAddCount, Is.EqualTo("6"), "ERROR: Expected 6, received " + afterSixItemAddCount);
-            Assert.That(afterSixITemAddOneItemRemovedCount, Is.EqualTo("5"), "Expected 5, received " + afterSixITemAddOneItemRemovedCount);
+            Assert.That(afterSixItemAddOneItemRemovedCount, Is.EqualTo("5"), "ERROR: Expected 5, received " + afterSixItemAddOneItemRemovedCount);
+            Assert.That(afterSixItemAddTwoItemRemovedCount, Is.EqualTo("4"), "ERROR: Expected 4, received " + afterSixItemAddOneItemRemovedCount);
+            Assert.That(afterSixItemAddThreeItemRemovedCount, Is.EqualTo("3"), "ERROR: Expected 3, received " + afterSixItemAddOneItemRemovedCount);
+            Assert.That(afterSixItemAddFourItemRemovedCount, Is.EqualTo("2"), "ERROR: Expected 2, received " + afterSixItemAddOneItemRemovedCount);
+            Assert.That(afterSixItemAddFiveItemRemovedCount, Is.EqualTo("1"), "ERROR: Expected 1, received " + afterSixItemAddOneItemRemovedCount);
+            Assert.That(afterAllItemsRemovedBadgeVisable, Is.False, "ERROR: Badge still visable");
         }
 
-        [Test, Order(15)]
+        [Test, Order(5)]
         [Author("Travis Schultz")]
         [Description("Clicks the About Link in the hamburger menu and validates the URL and Title")]
         [Category("SmokeTest")]
         [Category("InventoryPage")]
+        [Category("SharedElements")]
         public void InventoryPageShouldNavigateToSauceLabsPageWhenAboutLinkIsClickedInHamburgerMenu()
         {
             //Arrange
@@ -295,17 +153,18 @@ namespace WebUITestFramework.Tests
             Assert.That(_driver.Url, Is.EqualTo("https://saucelabs.com/"), "ERROR: URL Mismatch");
         }
 
-        [Test, Order(16)]
+        [Test, Order(6)]
         [Author("Travis Schultz")]
         [Description("Adds three items to the cart, clicks the hamburger menu, clicks Reset App State, then checks that the cart is reset")]
         [Category("SmokeTest")]
         [Category("InventoryPage")]
+        [Category("SharedElements")]
         public void InventoryPageShouldResetTheCartWhenResetAppStateIsClickedInHamburgerMenu()
         {
             //Arrange
-            _inventoryPage.ClickAddBackpackToCartButton();
-            _inventoryPage.ClickAddBikeLightToCartButton();
-            _inventoryPage.ClickAddOnesieToCartButton();
+            _inventoryPage.BackpackSection.ClickAddToCart();
+            _inventoryPage.BikeLightSection.ClickAddToCart();
+            _inventoryPage.OnesieSection.ClickAddToCart();
             string preResetCartCount = _inventoryPage.GetShoppingCartDotText();
             _inventoryPage.ClickBurgerMenuButton();
 
@@ -318,11 +177,12 @@ namespace WebUITestFramework.Tests
             Assert.That(cartBadgeIsEnabled, Is.False, "ERROR: Cart Badge Still displayed");
         }
 
-        [Test, Order(17)]
+        [Test, Order(7)]
         [Author("Travis Schultz")]
         [Description("Clicks the hamburger menu then clicks Logout, then checks that the URL is correct")]
         [Category("SmokeTest")]
         [Category("InventoryPage")]
+        [Category("SharedElements")]
         public void InventoryPageShouldNavigateToLoginScreenWhenLogoutIsClickedInHamburgerMenu()
         {
             //Arrange

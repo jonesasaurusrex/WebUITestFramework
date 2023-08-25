@@ -13,6 +13,8 @@ C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebUITest
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebUITestFramework.runtimeconfig.json
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebUITestFramework.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebUITestFramework.pdb
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\AngleSharp.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\SeleniumExtras.PageObjects.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\Microsoft.TestPlatform.CoreUtilities.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
@@ -24,7 +26,12 @@ C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\Microsoft
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\NuGet.Frameworks.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\nunit.framework.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriver.Support.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriver.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\ICSharpCode.SharpZipLib.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\System.Text.Json.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriverManager.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
@@ -90,6 +97,7 @@ C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\zh-Hans\M
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.csproj.AssemblyReference.cache
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.GeneratedMSBuildEditorConfig.editorconfig
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.AssemblyInfoInputs.cache
@@ -101,11 +109,3 @@ C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\refint\We
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.pdb
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\WebUITestFramework.genruntimeconfig.cache
 C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\obj\Debug\net6.0\ref\WebUITestFramework.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\AngleSharp.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\SeleniumExtras.PageObjects.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriver.Support.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\ICSharpCode.SharpZipLib.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\System.Text.Json.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\WebDriverManager.dll
-C:\Temp\nihtemp\WebUITestFramework\WebUITestFramework\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

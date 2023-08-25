@@ -19,7 +19,8 @@ namespace WebUITestFramework.PageObjects
         public const string PASSWORD_REQUIRED_ERROR_MESSAGE = "Epic sadface: Password is required";
         public const string PASSWORD_AND_USERNAME_MISMATCH_ERROR_MESSAGE = "Epic sadface: Username and password do not match any user in this service";
         public const string USER_HAS_BEEN_LOCKED_OUT_ERROR_MESSAGE = "Epic sadface: Sorry, this user has been locked out.";
-        public const string USER_HAS_TIMED_OUT_ERROR_MESSAGE = "Epic sadface: You can only access '/inventory-item.html' when you are logged in.";
+        public const string USER_HAS_TIMED_OUT_FROM_INVENTORY_ERROR_MESSAGE = "Epic sadface: You can only access '/inventory.html' when you are logged in.";
+        public const string USER_HAS_TIMED_OUT_FROM_INVENTORY_ITEM_ERROR_MESSAGE = "Epic sadface: You can only access '/inventory-item.html' when you are logged in.";
         public const string STANDARD_USER_USERNAME = "standard_user";
         public const string LOCKED_OUT_USER_USERNAME = "locked_out_user";
         public const string PASSWORD = "secret_sauce";
