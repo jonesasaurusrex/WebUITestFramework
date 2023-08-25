@@ -13,7 +13,7 @@ namespace WebUITestFramework.PageObjects
     /// </summary>
     public class LoginPage
     {
-        public const string URL = "https://www.saucedemo.com";
+        public const string URL = "https://www.saucedemo.com/";
         public const string TITLE = "Swag Labs";
         public const string USERNAME_REQUIRED_ERROR_MESSAGE = "Epic sadface: Username is required";
         public const string PASSWORD_REQUIRED_ERROR_MESSAGE = "Epic sadface: Password is required";

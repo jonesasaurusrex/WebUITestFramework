@@ -338,6 +338,15 @@ namespace WebUITestFramework.PageObjects
             return shoppingCartBadge.Text;
         }
 
+        /// <summary>
+        /// Checks to see if the badge is present
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckForShoppingCartBadge()
+        {
+            return _driver.FindElements(By.ClassName("shopping_cart_badge")).Count > 0;
+        }
+
         //Burger Menu Section Methods
         /// <summary>
         /// Clicks the Burger Menu button
@@ -345,6 +354,7 @@ namespace WebUITestFramework.PageObjects
         public void ClickBurgerMenuButton()
         {
             burgerMenuButton.Click();
+            Thread.Sleep(100);
         }
 
         /// <summary>
