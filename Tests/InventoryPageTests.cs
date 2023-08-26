@@ -1,11 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebUITestFramework.PageObjects;
+using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.Tests
 {
@@ -79,6 +75,7 @@ namespace WebUITestFramework.Tests
 
             //Act
             section.ClickRemoveFromCart();
+
             //Assert
             Assert.That(_inventoryPage.CheckForShoppingCartBadge, Is.False, "ERROR: Badge is still displayed");
         }

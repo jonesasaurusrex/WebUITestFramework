@@ -1,12 +1,10 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WebUITestFramework.PageObjects
+namespace WebUITestFramework.PageObjects.Inventory
 {
+    /// <summary>
+    /// Provides methods for interacting with the item-specific subsections for the individual inventory items
+    /// </summary>
     public class InventoryItemSection
     {
         private IWebDriver _driver;
@@ -24,8 +22,7 @@ namespace WebUITestFramework.PageObjects
 
         private string _removeFromCartButtonId;
 
-
-        public InventoryItemSection(IWebDriver driver, string addToCartButtonId, string removeFromCartButtonId, string itemTitleLinkId, string itemImageLinkId) 
+        public InventoryItemSection(IWebDriver driver, string addToCartButtonId, string removeFromCartButtonId, string itemTitleLinkId, string itemImageLinkId)
         {
             _driver = driver;
             _addToCartButtonId = addToCartButtonId;
@@ -47,26 +44,26 @@ namespace WebUITestFramework.PageObjects
         /// <summary>
         /// Clicks the Remove button in the section
         /// </summary>
-        public void ClickRemoveFromCart() 
+        public void ClickRemoveFromCart()
         {
             removeFromCartButton = _driver.FindElement(By.Id(_removeFromCartButtonId));
-            removeFromCartButton.Click(); 
+            removeFromCartButton.Click();
         }
 
         /// <summary>
         /// Clicks the Title in the section
         /// </summary>
         public void ClickItemTitleLink()
-        {  
-            itemTitleLink.Click(); 
+        {
+            itemTitleLink.Click();
         }
 
         /// <summary>
         /// Clicks the Image in the section
         /// </summary>
-        public void ClickItemImageLink() 
-        {  
-            itemImageLink.Click(); 
+        public void ClickItemImageLink()
+        {
+            itemImageLink.Click();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using AngleSharp.Dom;
-using OpenQA.Selenium;
-using WebUITestFramework.PageObjects;
+﻿using OpenQA.Selenium;
 
 namespace WebUITestFramework
 {

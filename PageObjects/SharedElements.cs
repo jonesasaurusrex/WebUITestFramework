@@ -1,13 +1,11 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebUITestFramework.PageObjects
 {
+    /// <summary>
+    /// Provides methods for interacting with the hamburger menu and the cart icon
+    /// </summary>
     public class SharedElements
     {
         private IWebDriver _driver;

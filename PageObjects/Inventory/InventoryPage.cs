@@ -1,14 +1,11 @@
-﻿using NUnit.Framework.Constraints;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WebUITestFramework.PageObjects
+namespace WebUITestFramework.PageObjects.Inventory
 {
+    /// <summary>
+    /// Provides methods for interacting with the inventory page
+    /// </summary>
     public class InventoryPage : SharedElements
     {
         public const string URL = "https://www.saucedemo.com/inventory.html";
