@@ -10,6 +10,7 @@ namespace WebUITestFramework.PageObjects
     public class CartPage : SharedElements
     {
         IWebDriver _driver;
+        public const string URL = "https://www.saucedemo.com/cart.html";
 
         //Elements
         [FindsBy(How = How.Id, Using = "checkout")]
