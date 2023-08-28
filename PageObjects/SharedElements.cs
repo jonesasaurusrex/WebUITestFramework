@@ -38,9 +38,10 @@ namespace WebUITestFramework.PageObjects
         /// <summary>
         /// Clicks the Shopping Cart icon
         /// </summary>
-        public void ClickShoppingCartIcon()
+        public CartPage ClickShoppingCartIcon()
         {
             shoppingCartContainer.Click();
+            return new CartPage(_driver);
         }
 
         /// <summary>
