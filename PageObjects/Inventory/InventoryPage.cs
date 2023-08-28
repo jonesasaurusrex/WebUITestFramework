@@ -117,5 +117,20 @@ namespace WebUITestFramework.PageObjects.Inventory
                 TEST_ALL_THE_THINGS_TSHIRT_ELEMENT_IDS[3]
                 );
         }
+
+        /// <summary>
+        /// Clicks the Add to cart button for all items on the inventory page, then clicks the cart icon
+        /// </summary>
+        /// <returns></returns>
+        public CartPage AddAllItemsThenClickCartIcon()
+        {
+            BackpackSection.ClickAddToCart();
+            BikeLightSection.ClickAddToCart();
+            BoltTShirtSection.ClickAddToCart();
+            FleeceJacketSection.ClickAddToCart();
+            OnesieSection.ClickAddToCart();
+            TestAllTheThingsTShirtSection.ClickAddToCart();
+            return ClickShoppingCartIcon();
+        }
     }
 }

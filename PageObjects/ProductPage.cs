@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System.Linq.Expressions;
+using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.PageObjects
 {
@@ -60,9 +62,10 @@ namespace WebUITestFramework.PageObjects
         /// <summary>
         /// Clicks the Return to products button in the product page
         /// </summary>
-        public void ClickReturnToProducts()
+        public InventoryPage ClickReturnToProducts()
         {
             backToProductsButton.Click();
+            return new InventoryPage(_driver);
         }
 
         /// <summary>

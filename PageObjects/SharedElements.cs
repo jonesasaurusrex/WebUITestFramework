@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.PageObjects
 {
@@ -75,9 +76,10 @@ namespace WebUITestFramework.PageObjects
         /// <summary>
         /// Clicks the All Items sidebar link
         /// </summary>
-        public void ClickAllItemsSidebarLink()
+        public InventoryPage ClickAllItemsSidebarLink()
         {
             allItemsSidebarLink.Click();
+            return new InventoryPage(_driver);
         }
 
         /// <summary>

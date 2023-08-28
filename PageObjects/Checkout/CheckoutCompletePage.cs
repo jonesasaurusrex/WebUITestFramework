@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.PageObjects.Checkout
 {
@@ -13,13 +14,27 @@ namespace WebUITestFramework.PageObjects.Checkout
     /// </summary>
     public class CheckoutCompletePage : SharedElements
     {
+        public const string URL = "https://www.saucedemo.com/checkout-complete.html";
+
         private IWebDriver _driver;
 
-        public const string URL = "https://www.saucedemo.com/checkout-complete.html";
+        [FindsBy(How = How.Id, Using = "back-to-products")]
+        private IWebElement _backHomeButton;
+
         public CheckoutCompletePage(IWebDriver driver) : base(driver) 
         {
             _driver = driver;
             PageFactory.InitElements(driver, this);
+        }
+
+        /// <summary>
+        /// Clicks the Back Home button
+        /// </summary>
+        /// <returns></returns>
+        public InventoryPage ClickBackHome()
+        {
+            _backHomeButton.Click();
+            return new InventoryPage(_driver);
         }
     }
 }
