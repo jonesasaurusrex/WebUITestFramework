@@ -104,6 +104,16 @@ namespace WebUITestFramework.PageObjects
             resetAppStateSidebarLink.Click();
         }
 
+        /// <summary>
+        /// Clicks the button with the given id
+        /// </summary>
+        /// <param name="id"></param>
+        public void ClickButtonById(string id)
+        {
+            IWebElement button = _driver.FindElement(By.Id(id));
+            button.Click();
+        }
+
         public SharedElements(IWebDriver driver)
         {
             _driver = driver;

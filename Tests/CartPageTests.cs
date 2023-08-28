@@ -54,10 +54,9 @@ namespace WebUITestFramework.Tests
         public void CartPageShouldUpdateToIncludeEachProductWhenAddedToCart(string addToCartId, string productName)
         {
             //Arrange
-            IWebElement addToCartButton = _driver.FindElement(By.Id(addToCartId));
 
             //Act
-            addToCartButton.Click();
+            _inventoryPage.ClickButtonById(addToCartId);
             var cartPage = _inventoryPage.ClickShoppingCartIcon();
 
             //Assert
@@ -107,14 +106,12 @@ namespace WebUITestFramework.Tests
         public void CartPageShouldAddIncludeItemInCartWhenAddedAndShouldRemoveWhenRemoveButtonClicked(string addToCartId, string removeFromCartId, string productName)
         {
             //Arrange
-            IWebElement addToCartButton = _driver.FindElement(By.Id(addToCartId));
 
             //Act
-            addToCartButton.Click();
+            _inventoryPage.ClickButtonById(addToCartId);
             var cartPage = _inventoryPage.ClickShoppingCartIcon();
             bool productNameOnPagePreRemove = Globals.TextIsPresentOnPage(_driver, productName);
-            IWebElement removeFromCartButton = _driver.FindElement(By.Id(removeFromCartId));
-            removeFromCartButton.Click();
+            cartPage.ClickButtonById(removeFromCartId);
             bool productNameOnPagePostRemove = Globals.TextIsPresentOnPage(_driver, productName);
 
             //Assert

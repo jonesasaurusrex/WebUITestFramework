@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using WebUITestFramework.PageObjects.Checkout;
 using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.PageObjects
@@ -28,9 +29,10 @@ namespace WebUITestFramework.PageObjects
         /// <summary>
         /// Clicks the Checkout button in the cart page
         /// </summary>
-        public void ClickCheckout()
+        public CheckoutStepOnePage ClickCheckout()
         {
             checkoutButton.Click();
+            return new CheckoutStepOnePage(_driver);
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         public void ClickRemoveBikeLightButton()
         {
-            ClickRemoveButton("remove-sauce-labs-bike-light");
+            ClickRemoveButtonById("remove-sauce-labs-bike-light");
         }
 
         /// <summary>
@@ -56,7 +58,7 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         public void ClickRemoveBackpackButton()
         {
-            ClickRemoveButton("remove-sauce-labs-backpack");
+            ClickRemoveButtonById("remove-sauce-labs-backpack");
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         public void ClickRemoveBoltTShirtButton()
         {
-            ClickRemoveButton("remove-sauce-labs-bolt-t-shirt");
+            ClickRemoveButtonById("remove-sauce-labs-bolt-t-shirt");
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         public void ClickRemoveFleeceJacketButton()
         {
-            ClickRemoveButton("remove-sauce-labs-fleece-jacket");
+            ClickRemoveButtonById("remove-sauce-labs-fleece-jacket");
         }
 
         /// <summary>
@@ -80,7 +82,7 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         public void ClickRemoveTestAllTheThingsTShirtButton()
         {
-            ClickRemoveButton("remove-test.allthethings()-t-shirt-(red)");
+            ClickRemoveButtonById("remove-test.allthethings()-t-shirt-(red)");
         }
 
         /// <summary>
@@ -88,10 +90,10 @@ namespace WebUITestFramework.PageObjects
         /// </summary>
         public void ClickRemoveOnesieButton()
         {
-            ClickRemoveButton("remove-sauce-labs-onesie");
+            ClickRemoveButtonById("remove-sauce-labs-onesie");
         }
 
-        public void ClickRemoveButton(string removeButtonId)
+        public void ClickRemoveButtonById(string removeButtonId)
         {
             IWebElement removeButton = _driver.FindElement(By.Id(removeButtonId));
             if (removeButton != null)
