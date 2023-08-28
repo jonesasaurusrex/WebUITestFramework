@@ -9,7 +9,7 @@ namespace WebUITestFramework.PageObjects
     /// </summary>
     public class CartPage : SharedElements
     {
-        IWebDriver _driver;
+        private IWebDriver _driver;
         public const string URL = "https://www.saucedemo.com/cart.html";
 
         //Elements
