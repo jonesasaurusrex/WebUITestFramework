@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Linq.Expressions;
 using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.PageObjects

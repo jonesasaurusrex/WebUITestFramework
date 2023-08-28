@@ -1,11 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebUITestFramework.PageObjects;
+using WebUITestFramework.PageObjects.Checkout;
 using WebUITestFramework.PageObjects.Inventory;
 
 namespace WebUITestFramework.Tests
@@ -156,7 +152,7 @@ namespace WebUITestFramework.Tests
 
             //Assert
             Assert.That(urlPreButtonClick, Is.EqualTo(CartPage.URL), "ERROR: URL mismatch before button is clicked");
-            Assert.That(urlPostButtonClick, Is.EqualTo("https://www.saucedemo.com/checkout-step-one.html"), "ERROR: URL mismatch after button is clicked");
+            Assert.That(urlPostButtonClick, Is.EqualTo(CheckoutStepOnePage.URL), "ERROR: URL mismatch after button is clicked");
         }
 
         [TearDown]

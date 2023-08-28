@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebUITestFramework.PageObjects.Checkout
 {
@@ -32,7 +27,7 @@ namespace WebUITestFramework.PageObjects.Checkout
         [FindsBy(How = How.Id, Using = "continue")]
         private IWebElement _continueButton;
 
-        [FindsBy(How = How.Id, Using = "Cancel")]
+        [FindsBy(How = How.Id, Using = "cancel")]
         private IWebElement _cancelButton;
 
         [FindsBy(How = How.ClassName, Using = "error-button")]
@@ -94,6 +89,22 @@ namespace WebUITestFramework.PageObjects.Checkout
         public void EnterPostalCode(string postalCode)
         {
             _postalCodeTextBox.SendKeys(postalCode);
+        }
+
+        /// <summary>
+        /// Enters the given information into the form and clicks the Continue button
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="postalCode"></param>
+        /// <returns></returns>
+        public CheckoutStepTwoPage EnterInfoClickContinue(string firstName, string lastName, string postalCode)
+        {
+            EnterFirstName(firstName);
+            EnterLastName(lastName);
+            EnterPostalCode(postalCode);
+            ClickContinue();
+            return new CheckoutStepTwoPage(_driver);
         }
     }
 }
